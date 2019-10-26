@@ -75,6 +75,8 @@ export default class EventCalendar extends React.Component {
       end = 24,
       formatHeader,
       upperCaseHeader = false,
+      onNext = this._next,
+      onPrevious = this._previous,
     } = this.props;
     const date = moment(initDate).add(index - this.props.size, 'days');
 
@@ -98,7 +100,7 @@ export default class EventCalendar extends React.Component {
         <View style={this.styles.header}>
           <TouchableOpacity
               style={this.styles.arrowButton}
-              onPress={this._previous}
+              onPress={onPrevious}
           >
             {leftIcon}
           </TouchableOpacity>
@@ -107,7 +109,7 @@ export default class EventCalendar extends React.Component {
           </View>
           <TouchableOpacity
               style={this.styles.arrowButton}
-              onPress={this._next}
+              onPress={onNext}
           >
             {rightIcon}
           </TouchableOpacity>
