@@ -74,6 +74,8 @@ export default class EventCalendar extends React.Component {
       start = 0,
       end = 24,
       formatHeader,
+      headerStyle = {},
+      headerLabelStyle = {},
       upperCaseHeader = false,
       onNext = this._next,
       onPrevious = this._previous,
@@ -97,7 +99,7 @@ export default class EventCalendar extends React.Component {
 
     return (
       <View style={[this.styles.container, { width }]}>
-        <View style={this.styles.header}>
+        <View style={[this.styles.header, headerStyle]}>
           <TouchableOpacity
               style={this.styles.arrowButton}
               onPress={onPrevious}
@@ -105,7 +107,7 @@ export default class EventCalendar extends React.Component {
             {leftIcon}
           </TouchableOpacity>
           <View style={this.styles.headerTextContainer}>
-            <Text style={this.styles.headerText}>{headerText}</Text>
+            <Text style={[this.styles.headerText, headerLabelStyle]}>{headerText}</Text>
           </View>
           <TouchableOpacity
               style={this.styles.arrowButton}
@@ -118,8 +120,6 @@ export default class EventCalendar extends React.Component {
           date={date}
           index={index}
           format24h={format24h}
-          formatHeader={this.props.formatHeader}
-          headerStyle={this.props.headerStyle}
           renderEvent={this.props.renderEvent}
           eventTapped={this.props.eventTapped}
           events={item}
